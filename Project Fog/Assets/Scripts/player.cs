@@ -6,13 +6,12 @@ public class player : MonoBehaviour {
 	public Rigidbody2D rb;
 	public float speed;
 	public float velocity;
-	Camera viewCamera;
+	public float rotate;
 	// Use this for initialization
 	void Start () 
 	{
 		//Cursor.visible = false;
 		rb = GetComponent<Rigidbody2D> ();
-		viewCamera = Camera.main;
 	}
 	
 	// Update is called once per frame
@@ -24,21 +23,16 @@ public class player : MonoBehaviour {
 		Vector2 movement = new Vector2 (moveHorizontal, moveVertical);
 		rb.velocity = (movement * speed);
 
-		/*if (Input.mousePosition) 
+		if(Input.mousePosition.x < transform.localScale.x)
 		{
-
+			transform.localScale = new Vector2(transform.localScale.x* -1, transform.localScale.y*1);
 		}
 
-		if (rigidbody2D.velocity.x >= 0)
+		if (Input.GetKeyDown (KeyCode.R)) 
 		{
-			Debug.Log("Moving right " + rigidbody2D.velocity.x);
-			transform.localScale = new Vector2(transform.localScale.x, transform.localScale.y);
-		}
-		else
-		{
-			Debug.Log("Moving left " + rigidbody2D.velocity.x);
-			transform.localScale = new Vector2(-transform.localScale.x, transform.localScale.y);
+			Application.LoadLevel (Application.loadedLevel);
 		}
 	}
-*/}
 }
+
+
